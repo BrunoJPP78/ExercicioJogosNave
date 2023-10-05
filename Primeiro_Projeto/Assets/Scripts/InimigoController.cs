@@ -18,4 +18,10 @@ public class InimigoController : MonoBehaviour
     {
         _rb2d.MovePosition(_rb2d.position + new Vector2(0, _speed) * Time.deltaTime);
     }
+
+    public void Destruir()
+    {
+        ControladorPontuacao.Pontuacao++;
+        Destroy(this.gameObject);
+    }
 }

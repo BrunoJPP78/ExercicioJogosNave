@@ -20,12 +20,18 @@ public class LaserPrefab : MonoBehaviour
         _rb2d.MovePosition(_rb2d.position+new Vector2(0, _speedY)*Time.deltaTime);   
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("inimigo"))
         {
+            InimigoController inimigo = other.GetComponent<InimigoController>();
+            if (inimigo != null)
+            {
+                inimigo.Destruir(); // Chame o método Destruir() na instância do InimigoController.
+            }
+
             Destroy(this.gameObject);
-            Destroy(other.gameObject);
         }
     }
+
 }
